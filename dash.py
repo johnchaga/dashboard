@@ -4,11 +4,18 @@ import plotly.express as px
 
 # Load Data
 @st.cache_data
+@st.cache_data
 def load_data():
     df = pd.read_csv("Aviation_Data.csv", encoding='latin1', low_memory=False)
-    st.write("Columns in dataset:", df.columns.tolist())  # Debugging step
+    
+    # Fix column names
+    df.columns = df.columns.str.replace('.', '_')
+    
+    # Convert Event_Date to datetime
     df['Event_Date'] = pd.to_datetime(df['Event_Date'], errors='coerce')
+    
     return df
+
 
 df = load_data()
 
