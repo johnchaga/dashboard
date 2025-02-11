@@ -4,18 +4,11 @@ import plotly.express as px
 
 # Load Data
 @st.cache_data
-@st.cache_data
 def load_data():
     df = pd.read_csv("Aviation_Data.csv", encoding='latin1', low_memory=False)
-    
-    # Fix column names
     df.columns = df.columns.str.replace('.', '_')
-    
-    # Convert Event_Date to datetime
     df['Event_Date'] = pd.to_datetime(df['Event_Date'], errors='coerce')
-    
     return df
-
 
 df = load_data()
 
@@ -53,6 +46,11 @@ weather_counts = df['Weather_Condition'].value_counts().reset_index()
 weather_counts.columns = ['Weather Condition', 'Accident Count']
 fig3 = px.pie(weather_counts, names='Weather Condition', values='Accident Count', title="Accidents by Weather Condition")
 st.plotly_chart(fig3)
+
+# Histogram for Fatal Injuries
+st.subheader("Distribution of Fatal Injuries")
+fig4 = px.histogram(df, x='Total_Fatal_Injuries', nbins=30, title="Histogram of Fatal Injuries")
+st.plotly_chart(fig4)
 
 # Display Filtered Data
 st.subheader("Filtered Data Table")
