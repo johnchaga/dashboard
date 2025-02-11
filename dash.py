@@ -6,6 +6,7 @@ import plotly.express as px
 @st.cache_data
 def load_data():
     df = pd.read_csv("Aviation_Data.csv", encoding='latin1', low_memory=False)
+        st.write("Columns in dataset:", df.columns.tolist())  # Debugging step
     df['Event_Date'] = pd.to_datetime(df['Event_Date'], errors='coerce')
     return df
 
