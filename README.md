@@ -60,5 +60,4 @@ To ensure data quality and consistency, the following preprocessing steps were a
 - **Pilot Training**: Enhance IMC training and emergency response skills.
 - **Operational Safety**: Implement stricter maintenance and risk assessment protocols, especially for high-risk flight phases.
 
-This README serves as an overview of the project and its key insights for business stakeholders.
 
